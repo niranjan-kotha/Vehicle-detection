@@ -457,7 +457,7 @@ for i in range(len(images)-1):
 
 # In[ ]:
 
-video_output = 'project_result.mp4'
+video_output = 'result.mp4'
 clip1 = VideoFileClip('../project5/project_video.mp4')
 white_clip = clip1.fl_image(process_image())
 white_clip.write_videofile(video_output, audio=False)
