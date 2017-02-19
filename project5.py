@@ -186,16 +186,17 @@ def extract_features(imgs, color_space='BGR', spatial_size=(32, 32),
 # window size (x and y dimensions),  
 # and overlap fraction (for both x and y)
 #window sizes are small at the top and large in the bottom
-sizeofwindow = [(75, 75), (100, 100), (125, 125)]
-startrowofwindow = [(360, 560), (380, 640), (400, 720)]
-overlapratio = (0.75, 0.75)
+WINDOW_SIZES =            [(64,64),(120,120),(100,100),(160,160)]
+WINDOW_Y_START_STOP = [(400, 450),(400, 450), (400,514), (450, 600)]
+WINDOW_OVERLAP = (0.5,0.75,0.8,0.8)
 
 def slide_windows(img):
     # Accumulate the list of windows to be searched.
     window_list = []
     
     # Process each window size.
-    for (xy_window, y_start_stop) in zip(sizeofwindow, startrowofwindow):
+        for (xy_window, y_start_stop,overlap) in zip(WINDOW_SIZES, WINDOW_Y_START_STOP,WINDOW_OVERLAP):
+
         # Set the start and stop regions to scan.
         x_start = 0
         x_stop = img.shape[1]
